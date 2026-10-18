@@ -67,8 +67,16 @@ jobs:
           path: build
       - name: Ensure Pages project exists
         run: npx --yes wrangler@3 pages project create "$PAGES_PROJECT" --production-branch main || echo "project already exists"
-      - uses: cloudflare/wrangler-action@v3
+      - id: wrangler
+        uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy build --project-name qg-frontend-v2 --branch main
+      - name: Smoke test deployment URL
+        env:
+          DEPLOY_URL: ${{ steps.wrangler.outputs.deployment-url }}
+        run: |
+          echo "deployment: $DEPLOY_URL"
+          curl -fsS --retry 5 --retry-delay 5 --retry-all-errors "$DEPLOY_URL/" | grep -q '<div id="root">'
+          curl -fsS -o /dev/null --retry 5 --retry-delay 5 --retry-all-errors -w "%{http_code} /about (SPA fallback)\n" "$DEPLOY_URL/about"
