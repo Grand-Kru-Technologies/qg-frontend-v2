@@ -13,13 +13,13 @@
     "@types/node": "^16.11.1",
     "@types/react": "^17.0.30",
     "@types/react-dom": "^17.0.9",
-    "bootstrap": "^5.1.1",
+    "bootstrap": "^5.3.8",
     "react": "^17.0.2",
     "react-bootstrap": "^1.6.4",
     "react-dom": "^17.0.2",
     "react-icons": "^4.3.1",
     "react-router-dom": "^5.3.0",
-    "react-scripts": "4.0.3",
+    "react-scripts": "^5.0.1",
     "styled-components": "^5.3.3",
     "typescript": "^4.4.4",
     "web-vitals": "^1.1.2"
@@ -31,7 +31,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "test:ci" : "CI=true react-scripts test",
+    "test:ci": "CI=true react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public"
@@ -69,13 +69,16 @@
     "@storybook/addon-essentials": "^6.3.12",
     "@storybook/addon-links": "^6.3.12",
     "@storybook/node-logger": "^6.3.12",
-    "@storybook/preset-create-react-app": "^3.2.0",
+    "@storybook/preset-create-react-app": "^4.1.2",
     "@storybook/react": "^6.3.12",
     "@types/react-router-dom": "^5.3.3",
     "@types/styled-components": "^5.1.15",
     "@typescript-eslint/eslint-plugin": "^5.59.6",
     "@typescript-eslint/parser": "^5.59.6",
-    "eslint": "^7.30.0",
+    "eslint": "^8.57.1",
     "eslint-plugin-react": "^7.32.2"
+  },
+  "engines": {
+    "node": ">=20"
   }
 }
